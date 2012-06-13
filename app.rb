@@ -21,9 +21,9 @@ get '/' do
   
   #get the response
    @translation = Translate.new
-   @translated = @translation.post('')
+   @translated = @translation.post("#{incoming}")
   
-    @sms = Twilio::Sms.new(@translated.)
+    @sms = Twilio::Sms.new(@translated.translatedText)
   else
     @sms= Twilio::Sms.new("You said:#{incoming}")
   end
