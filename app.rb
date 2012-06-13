@@ -3,6 +3,16 @@ require 'rubygems'
 require 'httparty'
 require 'twiliolib'
 
+class Translate
+    include HTTParty
+    base_uri "https://www.googleapis.com/language/translate"
+     def post(incoming)
+        self.class.get("/v2?key=PUT KEY HERE&source=en&target=es&q=#{incoming}")
+      end
+end
+
+
+
 
 get '/' do
   
@@ -24,13 +34,5 @@ get '/' do
   # Output the SMS message
   content_type "text/xml"
   @output.respond
-####################
-class Translate
-    include HTTParty
-    base_uri "https://www.googleapis.com/language/translate"
-     def post(incoming)
-        self.class.get("/v2?key=AIzaSyAcSHScuW3LtEdzBYq3zq7grxboB1TWm68&source=en&target=es&q=#{incoming}")
-      end
-end
-#####################
+
 end
